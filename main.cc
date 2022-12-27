@@ -645,7 +645,7 @@ usage() noexcept
 		<< "  -n <N>               Total number of handshakes to establish\n"
 		<< "  -t <N>               Number of threads"
 		<< " (default: " << DEFAULT_THREADS << ").\n"
-		<< "  -T,--to              Duration of the test (in seconds)\n"
+		<< "  -T,--to <N>          Duration of the test (in seconds)\n"
 		<< "  -c <cipher>          Force cipher choice\n"
 		<< "                       (use `openssl ciphers` to list available"
 					   " cipher suites),\n"
@@ -721,7 +721,7 @@ do_getopt(int argc, char *argv[]) noexcept
 		{"help", no_argument, NULL, 'h'},
 		{"debug", no_argument, NULL, 'd'},
 		{"quiet", no_argument, NULL, 'q'},
-		{"to", no_argument, NULL, 'T'},
+		{"to", required_argument, NULL, 'T'},
 		{"tls", required_argument, NULL, 'V'},
 		{"tickets", required_argument, NULL, 'K'},
 		{"keylogfile", required_argument, NULL, 'F'},
@@ -729,7 +729,7 @@ do_getopt(int argc, char *argv[]) noexcept
 		{0, 0, 0, 0}
 	};
 
-	while ((c = getopt_long(argc, argv, "hl:c:C:dqt:n:T:", long_opts, &o))
+	while ((c = getopt_long(argc, argv, "hl:c:C:dqt:n:T:V:K:F:s:", long_opts, &o))
 		!= -1)
 	{
 		switch (c) {
